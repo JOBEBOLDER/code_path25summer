@@ -92,3 +92,19 @@ observed_species2 = "ZZ"
 
 print(count_endangered_species(endangered_species1, observed_species1)) 
 print(count_endangered_species(endangered_species2, observed_species2))  
+
+def navigate_research_station(station_layout, observations):
+    # 用 enumerate 快速建立字母和索引的映射字典
+    letter_to_index = {}
+    for index, letter in enumerate(station_layout):
+        letter_to_index[letter] = index
+
+    total_time = 0
+    current_position = 0  # 从索引0开始
+
+    for letter in observations:
+        target_position = letter_to_index[letter]
+        total_time += abs(current_position - target_position)
+        current_position = target_position
+
+    return total_time
