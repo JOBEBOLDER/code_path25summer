@@ -13,7 +13,8 @@ plan:
 "( )[] { }"
    ^
 [ ]
-
+time: On
+space:On
 
 1. create a empty stack -> store the processing elements
 
@@ -53,4 +54,16 @@ print(is_valid_post_format("()"))
 print(is_valid_post_format("()[]{}")) 
 print(is_valid_post_format("(]"))
         
+#below method that save the memory when there are some cases like:(((((((((((((((((())))))))))))))))
+def is_valid_post_format(post):
+    stack = []
+    matching_tags = {')': '(', ']': '[', '}': '{'}
 
+    for char in post:
+        if char in '([{':
+            stack.append(char)
+        elif char in ')]}':
+            if not stack or stack.pop() != matching_tags[char]:
+                return False
+
+    return len(stack) == 0
