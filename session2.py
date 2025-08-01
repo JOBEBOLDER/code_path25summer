@@ -161,3 +161,93 @@ collection = build_tree(values)
 
 # Using print_tree() function at the top of page
 print_tree(add_plant(collection, "Aloe"))
+
+
+class TreeNode:
+    def __init__(self, key, value, left=None, right=None):
+        self.key = key      # Plant price
+        self.val = value      # Plant name
+        self.left = left
+        self.right = right
+
+
+def sort_plants(collection):
+    res = []
+        
+    def dfs(node):
+        #end condition
+        if node is None:
+            return
+        
+        #recursively call
+        dfs(node.left)
+        res.append((node.val,node.key))
+        dfs(node.right)
+    dfs(collection)
+    return res
+
+"""
+         (3, "Monstera")
+        /               \
+   (1, "Pothos")     (5, "Witchcraft Orchid")
+        \                 /
+  (2, "Spider Plant")   (4, "Hoya Motoskei")
+"""
+
+# Using build_tree() function at the top of page
+values = [(3, "Monstera"), (1, "Pothos"), (5, "Witchcraft Orchid"), None, (2, "Spider Plant"), (4, "Hoya Motoskei")]
+collection = build_tree(values)
+
+print(sort_plants(collection))
+
+def pick_plant(root, budget):
+    name = None
+    if not root:
+        return None
+    
+    while root:
+        if root.val < budget:
+            #poentially node:
+            name = root
+            root = root.right
+        else:
+            root = root.left
+    return name.key if name else None
+
+
+"""
+               (50, "Fiddle Leaf Fig")
+             /                       \
+    (25, "Monstera")           (70, "Snake Plant")
+       /        \                   /         \
+(15, "Aloe")  (40, "Pothos")  (60, "Fern")  (80, "ZZ Plant")
+"""
+
+# Using build_tree() function at the top of page
+values = [(50, "Fiddle Leaf Fig"), (25, "Monstera"), (70, "Snake Plant"), (15, "Aloe"), 
+            (40, "Pothos"), (60, "Fern"), (80, "ZZ Plant")]
+inventory = build_tree(values)
+
+print(pick_plant(inventory, 50)) 
+print(pick_plant(inventory, 25)) 
+print(pick_plant(inventory, 15)) 
+
+
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.val = value
+        self.left = left
+        self.right = right
+
+def remove_plant(collection, name):
+    # Find the node to remove
+    # If the node has no children
+        # Remove the node by setting parent pointer to None
+    # If the node has one child
+        # Replace the node with its child
+    # If the node has two children
+        # Find the inorder predecessor 
+        # Replace the node's value with inorder predecessor value
+        # Remove inorder predecessor
+    # Return root of updated tree
+    pass
