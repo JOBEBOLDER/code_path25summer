@@ -87,3 +87,28 @@ tree1 = TreeNode(1, TreeNode(None), TreeNode(3))
 tree2 = TreeNode(1, TreeNode(2), TreeNode(3))
 assert isSameTree(tree1, tree2) == True
 print(isSameTree(tree1, tree2))
+
+
+
+
+#Problem 1
+"""
+
+Understand: 
+
+   Input: 
+   
+   Output: 
+   
+   Edge cases:
+
+Match:
+
+
+Plan: 
+
+time complexity:
+space complexity:
+
+"""
+
